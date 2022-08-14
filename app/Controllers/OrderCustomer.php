@@ -6,6 +6,10 @@ class OrderCustomer extends BaseController
 {
     public function index()
     {
-        return view('dashboard\order_customer\order_customer');
+        $data = [
+                "title" => "Order Customer",
+        ];
+
+        return view('dashboard\order_customer\order_customer', $data);
     }
 }

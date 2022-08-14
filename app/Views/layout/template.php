@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Portal - Bootstrap 5 Admin Dashboard Template For Developers</title>
+    <title>DKLIN LAUNDRY | <?= $title; ?></title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -68,8 +68,13 @@
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#example').DataTable();
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#example2').DataTable();
         });
     </script>
 
