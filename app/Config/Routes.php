@@ -41,7 +41,8 @@ $routes->get('/login', 'Login::index');
 $routes->get('/register', 'Register::index');
 // Dashboard
 $routes->get('/dashboard', 'Dashboard::index');
-
+// Order Customer
+$routes->get('/order-customer', 'OrderCustomer::index');
 
 /*
  * --------------------------------------------------------------------

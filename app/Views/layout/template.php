@@ -19,6 +19,9 @@
     <!-- App CSS -->
     <link id="theme-style" rel="stylesheet" href="assets/templateauth/css/portal.css">
 
+    <!-- Datatables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+
 </head>
 
 <body class="app">
@@ -44,6 +47,8 @@
     </div>
     <!--//app-wrapper-->
 
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
     <!-- Javascript -->
     <script src="assets/templateauth/plugins/popper.min.js"></script>
@@ -55,6 +60,18 @@
 
     <!-- Page Specific JS -->
     <script src="assets/templateauth/js/app.js"></script>
+
+    <!-- Fontawesome 5 -->
+    <script src="https://kit.fontawesome.com/09078660ee.js" crossorigin="anonymous"></script>
+
+    <!-- Datatables -->
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
 
 </body>
 
