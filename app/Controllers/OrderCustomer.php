@@ -12,4 +12,13 @@ class OrderCustomer extends BaseController
 
         return view('dashboard\order_customer\order_customer', $data);
     }
+
+    public function tambah()
+    {
+        $data = [
+            "title" => "Tambah Nota",
+        ];
+
+        return view('dashboard\order_customer\tambah_nota', $data);
+    }
 }

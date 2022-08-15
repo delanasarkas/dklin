@@ -4,13 +4,7 @@
 <div class="container-xl">
     <div class="row g-3 mb-4 align-items-center justify-content-between">
         <div class="col-auto">
-            <h1 class="app-page-title mb-0">Data Orderan Customer</h1>
-        </div>
-        <div class="col-auto">
-            <a class="btn app-btn-secondary" href="/tambah-nota">
-                <i class="fas fa-plus"></i>
-                Tambah Nota
-            </a>
+            <h1 class="app-page-title mb-0">Paket Member</h1>
         </div>
         <!--//col-auto-->
     </div>
@@ -25,14 +19,13 @@
                             <thead>
                                 <tr>
                                     <th class="cell">No</th>
-                                    <th class="cell">Nomor Nota</th>
-                                    <th class="cell">Nama</th>
-                                    <th class="cell">Jasa</th>
-                                    <th class="cell">Kg/St</th>
-                                    <th class="cell">Jenis</th>
-                                    <th class="cell">Rp/Kg</th>
-                                    <th class="cell">Rp/Satuan</th>
-                                    <th class="cell">Pelunasan</th>
+                                    <th class="cell">Data Customer</th>
+                                    <th class="cell">No Nota</th>
+                                    <th class="cell">Tanggal Pesan</th>
+                                    <th class="cell">Berat Kg</th>
+                                    <th class="cell">Sisa Paket kg</th>
+                                    <th class="cell">Tanggal Keluar</th>
+                                    <th class="cell">Karyawan</th>
                                     <th class="cell"></th>
                                 </tr>
                             </thead>
@@ -42,28 +35,25 @@
                                         1
                                     </td>
                                     <td class="cell">
-                                        30451
+                                        Customer budi
                                     </td>
                                     <td class="cell">
-                                        John Sanders
+                                        304521
                                     </td>
                                     <td class="cell">
-                                        Cuci Setrika
+                                        8 Mei 2022
+                                    </td>
+                                    <td class="cell">
+                                        Deposit 4Kg
                                     </td>
                                     <td class="cell">
                                         4Kg
                                     </td>
                                     <td class="cell">
-                                        Ph
+                                        10 Mei 2022 
                                     </td>
                                     <td class="cell">
-                                        30.000
-                                    </td>
-                                    <td class="cell">
-                                        30.000
-                                    </td>
-                                    <td class="cell">
-                                        <span class="badge bg-success">Lunas</span>
+                                        Nani
                                     </td>
                                     <td class="cell">
                                         <a class="btn-sm app-btn-secondary" href="#">
@@ -76,28 +66,25 @@
                                         2
                                     </td>
                                     <td class="cell">
-                                        30452
+                                        Customer Andi
                                     </td>
                                     <td class="cell">
-                                        John Mayer
+                                        304522
                                     </td>
                                     <td class="cell">
-                                        Cuci Setrika
+                                        17 Juni 2022
                                     </td>
                                     <td class="cell">
-                                        4Kg
+                                        10Kg
                                     </td>
                                     <td class="cell">
-                                        Ph
+                                        5Kg
                                     </td>
                                     <td class="cell">
-                                        30.000
+                                        20 Juni 2022
                                     </td>
                                     <td class="cell">
-                                        30.000
-                                    </td>
-                                    <td class="cell">
-                                        <span class="badge bg-danger">Belum Lunas</span>
+                                      Nana
                                     </td>
                                     <td class="cell">
                                         <a class="btn-sm app-btn-secondary" href="#">

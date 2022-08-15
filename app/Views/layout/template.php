@@ -64,6 +64,9 @@
     <!-- Fontawesome 5 -->
     <script src="https://kit.fontawesome.com/09078660ee.js" crossorigin="anonymous"></script>
 
+    <!-- Rupiah Format -->
+    <script src="https://unpkg.com/@develoka/angka-rupiah-js/index.min.js"></script>
+
     <!-- Datatables -->
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>

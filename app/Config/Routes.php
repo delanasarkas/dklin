@@ -43,10 +43,17 @@ $routes->get('/register', 'Register::index');
 $routes->get('/dashboard', 'Dashboard::index');
 // Order Customer
 $routes->get('/order-customer', 'OrderCustomer::index');
+$routes->get('/tambah-nota', 'OrderCustomer::tambah');
 // Data TF/Uang Kas
 $routes->get('/data-tf','DataTf::index');
 // Proses
 $routes->get('/proses', 'Proses::index');
+// Paket Member
+$routes->get('/paket-member', 'PaketMember::index');
+// Laporan
+$routes->get('/laporan', 'Laporan::index');
+
+
 
 
 /*
