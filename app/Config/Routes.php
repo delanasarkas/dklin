@@ -35,29 +35,42 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+// Dashboard
+$routes->get('/', 'Dashboard::index');
+
 // auth
 $routes->get('/login', 'Login::index');
+$routes->post('/login/proses', 'Login::submit_login');
+$routes->get('/logout', 'Login::logout');
+
 $routes->get('/register', 'Register::index');
-// Dashboard
-$routes->get('/dashboard', 'Dashboard::index');
+$routes->post('/register/proses', 'Register::submit_register');
+
 // Order Customer
 $routes->get('/order-customer', 'OrderCustomer::index');
 $routes->get('/tambah-nota', 'OrderCustomer::tambah');
+
 // Data TF/Uang Kas
 $routes->get('/data-tf','DataTf::index');
+
 // Proses
 $routes->get('/proses', 'Proses::index');
+
 // Paket Member
 $routes->get('/paket-member', 'PaketMember::index');
+
 // Laporan
 $routes->get('/laporan', 'Laporan::index');
+
 // Dashboard Admin
 $routes->get('/dashboard-admin', 'DashboardAdmin::index');
+
 // Stock Opname
 $routes->get('/stock-opname', 'StockOpname::index');
+
 // Data Customer
 $routes->get('/data-customer', 'DataCustomer::index');
+
 // Data Karyawan
 $routes->get('/data-karyawan', 'DataKaryawan::index');
 

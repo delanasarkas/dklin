@@ -11,13 +11,16 @@
 
     <meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
     <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="/assets/images/logo.png">
 
     <!-- FontAwesome JS-->
     <script defer src="assets/templateauth/plugins/fontawesome/js/all.min.js"></script>
 
     <!-- App CSS -->
     <link id="theme-style" rel="stylesheet" href="assets/templateauth/css/portal.css">
+
+    <!-- TOASTR -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
 </head>
 
@@ -29,20 +32,18 @@
                     <div class="app-auth-branding mb-4"><img class="logo-icon me-2" src="assets/images/logo.png" alt="logo" width="70px"></div>
                     <h2 class="auth-heading text-center mb-5">Log in Dashboard</h2>
                     <div class="auth-form-container text-start">
-                        <form class="auth-form login-form">
+                        <form class="auth-form login-form" method="POST" action="<?= base_url("/login/proses") ?>">
                             <div class="email mb-3">
-                                <label class="sr-only" for="username">Username</label>
                                 <input id="username" name="username" type="text" class="form-control signin-email" placeholder="Username" required="required">
                             </div>
                             <!--//form-group-->
                             <div class="password mb-3">
-                                <label class="sr-only" for="signin-password">Password</label>
-                                <input id="signin-password" name="signin-password" type="password" class="form-control signin-password" placeholder="Password" required="required">
+                                <input id="password" name="password" type="password" class="form-control signin-password" placeholder="Password" required="required">
                                 <div class="extra mt-3 row justify-content-between">
                                     <div class="col-6">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="RememberPassword">
-                                            <label class="form-check-label" for="RememberPassword">
+                                            <input class="form-check-input" type="checkbox" value="" id="showPassword">
+                                            <label class="form-check-label" for="showPassword">
                                                 Lihat Password
                                             </label>
                                         </div>
@@ -86,7 +87,56 @@
     </div>
     <!--//row-->
 
+    <!-- JQUERY -->
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
 
+    <!-- TOASTR -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+        <?php if(session()->get('success')){ ?>
+            toastr.success("<?= session()->get('success'); ?>");
+        <?php }else if(session()->get('error')){  ?>
+            toastr.error("<?= session()->get('error'); ?>");
+        <?php }else if(session()->get('warning')){  ?>
+            toastr.warning("<?= session()->get('warning'); ?>");
+        <?php }else if(session()->get('info')){  ?>
+            toastr.info("<?= session()->get('info'); ?>");
+        <?php } ?>
+    </script>
+
+    <!-- SHOW PASSWORD -->
+    <script type="text/javascript">
+        $(document).ready(function(){		
+            $('#showPassword').click(function(){
+                if($(this).is(':checked')){
+                    $('#password').attr('type','text');
+                }else{
+                    $('#password').attr('type','password');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

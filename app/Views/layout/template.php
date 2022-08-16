@@ -11,8 +11,8 @@
 
     <meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
     <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
-    <link rel="shortcut icon" href="favicon.ico">
-
+    <link rel="shortcut icon" href="/assets/images/logo.png">
+    
     <!-- FontAwesome JS-->
     <script defer src="assets/templateauth/plugins/fontawesome/js/all.min.js"></script>
 
@@ -21,6 +21,9 @@
 
     <!-- Datatables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+
+    <!-- TOASTR -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
 </head>
 
@@ -66,6 +69,38 @@
 
     <!-- Rupiah Format -->
     <script src="https://unpkg.com/@develoka/angka-rupiah-js/index.min.js"></script>
+
+    <!-- TOASTR -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+        <?php if(session()->get('success')){ ?>
+            toastr.success("<?= session()->get('success'); ?>");
+        <?php }else if(session()->get('error')){  ?>
+            toastr.error("<?= session()->get('error'); ?>");
+        <?php }else if(session()->get('warning')){  ?>
+            toastr.warning("<?= session()->get('warning'); ?>");
+        <?php }else if(session()->get('info')){  ?>
+            toastr.info("<?= session()->get('info'); ?>");
+        <?php } ?>
+    </script>
 
     <!-- Datatables -->
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

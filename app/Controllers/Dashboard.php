@@ -6,10 +6,18 @@ class Dashboard extends BaseController
 {
     public function index()
     {
-        $data = [
-            "title" => "Dashboard",
-        ];
+        if(is_null(session()->get('logged_in'))){
+            return redirect()->to('/login');
+        } else {
+            $data = [
+                "title" => "Dashboard",
+            ];
 
-        return view('dashboard\dashboard', $data);
+            if(session()->get('role') === 'kasir') {
+                return view('dashboard\dashboard', $data);
+            } else {
+                return view('dashboard_admin\dashboard_admin', $data);
+            }
+        }
     }
 }

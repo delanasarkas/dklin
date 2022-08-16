@@ -1,11 +1,47 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\UsersModel;
 
 class Login extends BaseController
 {
     public function index()
     {
-        return view('auth\login');
+        if(session()->get('logged_in')){
+            return redirect()->back();
+        } else {
+            return view('auth\login');
+        }
+    }
+
+    public function submit_login()
+	{
+        $users = new UsersModel();
+        $username = $this->request->getVar('username');
+        $password = $this->request->getVar('password');
+        $dataUser = $users->where([
+            'username' => $username,
+            'password' => md5($password)
+        ])->first();
+        if ($dataUser) {
+            session()->set([
+                'id_users' => $dataUser['id_users'],
+                'username' => $dataUser['username'],
+                'no_telepon' => $dataUser['no_telepon'],
+                'role' => $dataUser['role'],
+                'logged_in' => TRUE
+            ]);
+            session()->setFlashdata('success', 'Anda berhasil login');
+            return redirect()->to('/');
+        } else {
+            session()->setFlashdata('error', 'Email atau Password Salah');
+            return redirect()->back();
+        }
+	}
+
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to('/login');
     }
 }

@@ -26,10 +26,15 @@
 
 
                     <div class="app-utility-item app-user-dropdown dropdown">
-                        <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="assets/templateauth/images/user.png" alt="user profile"></a>
+                        <?php if(session()->get('role') == 'admin'): ?>
+                            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="assets/templateauth/images/profiles/admin.png" class="rounded-circle" alt="admin profile"></a>
+                        <?php else : ?>
+                            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="assets/templateauth/images/profiles/kasir.png" class="rounded-circle" alt="kasir profile"></a>
+                        <?php endif; ?>
+
                         <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
                             <li><a class="dropdown-item" href="account.html">Account</a></li>
-                            <li><a class="dropdown-item" href="login.html">Log Out</a></li>
+                            <li><a class="dropdown-item" href="/logout">Log Out</a></li>
                         </ul>
                     </div>
                     <!--//app-user-dropdown-->

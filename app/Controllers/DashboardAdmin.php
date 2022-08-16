@@ -10,6 +10,10 @@ class DashboardAdmin extends BaseController
             "title" => "Dashboard",
         ];
 
-        return view('dashboard_admin\dashboard_admin', $data);
+        if(session()->get('role') === 'kasir') {
+            return view('dashboard\dashboard', $data);
+        } else {
+            return view('dashboard_admin\dashboard_admin', $data);
+        }
     }
 }
