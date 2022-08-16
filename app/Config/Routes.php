@@ -52,6 +52,16 @@ $routes->get('/proses', 'Proses::index');
 $routes->get('/paket-member', 'PaketMember::index');
 // Laporan
 $routes->get('/laporan', 'Laporan::index');
+// Dashboard Admin
+$routes->get('/dashboard-admin', 'DashboardAdmin::index');
+// Stock Opname
+$routes->get('/stock-opname', 'StockOpname::index');
+// Data Customer
+$routes->get('/data-customer', 'DataCustomer::index');
+// Data Karyawan
+$routes->get('/data-karyawan', 'DataKaryawan::index');
+
+
 
 
 
