@@ -11427,14 +11427,14 @@
     }
   }
   .app-login .auth-background-holder {
-    background: url("../images/background/screen-1.png") no-repeat center
+    background: url("../images/background/screen-1.jpg") no-repeat center
       center;
     background-size: cover;
     height: 100vh;
     min-height: 100%;
   }
   .app-signup .auth-background-holder {
-    background: url("../images/background/screen-2.png") no-repeat center
+    background: url("../images/background/screen-2.jpg") no-repeat center
       center;
     background-size: cover;
     height: 100vh;

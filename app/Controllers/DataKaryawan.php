@@ -12,4 +12,12 @@ class DataKaryawan extends BaseController
 
         return view('dashboard_admin\data_karyawan\data_karyawan', $data);
     }
+    public function tambah()
+    {
+        $data = [
+            "title" => "Tambah Karyawan",
+        ];
+
+        return view('dashboard_admin\data_karyawan\tambah_karyawan', $data);
+    }
 }

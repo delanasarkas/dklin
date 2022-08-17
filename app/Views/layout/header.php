@@ -33,7 +33,7 @@
                         <?php endif; ?>
 
                         <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
-                            <li><a class="dropdown-item" href="account.html">Account</a></li>
+                            <li><a class="dropdown-item" href="/account">Account</a></li>
                             <li><a class="dropdown-item" href="/logout">Log Out</a></li>
                         </ul>
                     </div>

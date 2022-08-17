@@ -42,6 +42,9 @@ $routes->get('/', 'Dashboard::index');
 $routes->get('/login', 'Login::index');
 $routes->post('/login/proses', 'Login::submit_login');
 $routes->get('/logout', 'Login::logout');
+// Account
+$routes->get('/account', 'Account::index');
+
 
 $routes->get('/register', 'Register::index');
 $routes->post('/register/proses', 'Register::submit_register');
@@ -73,6 +76,8 @@ $routes->get('/data-customer', 'DataCustomer::index');
 
 // Data Karyawan
 $routes->get('/data-karyawan', 'DataKaryawan::index');
+$routes->get('/tambah-karyawan', 'DataKaryawan::tambah');
+
 
 
 
