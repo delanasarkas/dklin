@@ -46,7 +46,7 @@ $routes->get('/logout', 'Login::logout');
 $routes->get('/account', 'Account::index');
 
 
-$routes->get('/register', 'Register::index');
+// $routes->get('/register', 'Register::index');
 $routes->post('/register/proses', 'Register::submit_register');
 
 // Order Customer

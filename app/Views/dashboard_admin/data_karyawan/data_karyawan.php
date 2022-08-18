@@ -14,7 +14,9 @@
         <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
             <div class="app-card app-card-orders-table shadow-sm mb-5">
                 <div class="app-card-body p-3">
-                    <a href="/tambah-karyawan" class="btn btn-primary text-white ms-2">+ Tambah Karyawan</a>
+                    <?php if(session()->get('role') == 'master-admin'): ?>
+                        <a href="/tambah-karyawan" class="btn btn-primary text-white ms-2">+ Tambah Karyawan</a>
+                    <?php endif; ?>
                     <div class="table-responsive mt-4">
                         <table id="example" style="width:100%" class="table table-striped app-table-hover mb-0 text-left">
                             <thead>

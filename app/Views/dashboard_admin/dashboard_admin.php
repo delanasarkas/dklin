@@ -40,14 +40,14 @@
             <!--//row-->
             <div class="row g-4 mb-4">
                 <div class="col-lg-6">
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            Omset : Rp 6.000.000
+                        </div>
+                    </div>
                     <div class="card">
                         <div class="card-body">
                             Rata-rata Penjualan : Rp 5.000.000
-                        </div>
-                    </div>
-                    <div class="card mt-2">
-                        <div class="card-body">
-                            Laba Kotor : Rp 6.000.000
                         </div>
                     </div>
                 </div>
@@ -56,8 +56,8 @@
                     <div class="card">
                         <div class="card-body mb-3">
                             Produk paling laku :
-                            <p class="mb-0">- Cuci</p>
-                            <p class="mb-0">- Cuci Setrika</p>
+                            <p class="mb-0">1. Cuci</p>
+                            <p class="mb-0">2. Cuci Setrika</p>
                         </div>
                     </div>
                     <!--//app-card-->

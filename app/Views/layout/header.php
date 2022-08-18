@@ -17,7 +17,7 @@
                 </div>
                 <!--//col-->
                 <div class="app-search-box col">
-                    <p class="m-0">Cabang Bogor | 12 Agustus 2022</p>
+                    <p class="m-0">Cabang Bukit Dago | 12 Agustus 2022</p>
                 </div>
                 <!--//app-search-box-->
 
@@ -26,7 +26,7 @@
 
 
                     <div class="app-utility-item app-user-dropdown dropdown">
-                        <?php if(session()->get('role') == 'admin'): ?>
+                        <?php if(session()->get('role') != 'kasir'): ?>
                             <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="assets/templateauth/images/profiles/admin.png" class="rounded-circle" alt="admin profile"></a>
                         <?php else : ?>
                             <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="assets/templateauth/images/profiles/kasir.png" class="rounded-circle" alt="kasir profile"></a>
