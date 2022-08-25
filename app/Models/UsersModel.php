@@ -12,8 +12,11 @@ class UsersModel extends Model
     protected $useAutoIncrement = true;
     protected $allowedFields = [
         'id_users',
+        'id_cabang',
         'username',
         'no_telepon',
+        'tgl_daftar',
+        'tgl_login',
         'password',
         'role',
     ];

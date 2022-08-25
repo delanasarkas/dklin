@@ -26,13 +26,25 @@ class Login extends BaseController
         if ($dataUser) {
             session()->set([
                 'id_users' => $dataUser['id_users'],
+                'id_cabang' => $dataUser['id_cabang'],
                 'username' => $dataUser['username'],
                 'no_telepon' => $dataUser['no_telepon'],
                 'role' => $dataUser['role'],
                 'logged_in' => TRUE
             ]);
+
+            // update login date
+            $users->update($dataUser['id_users'], [
+                'tgl_login' => date("Y-m-d H:i:s", time() + 86400)
+            ]);
+
             session()->setFlashdata('success', 'Anda berhasil login');
-            return redirect()->to('/');
+
+            if($dataUser['role'] == 'admin' || $dataUser['role'] == 'owner') {
+                return redirect()->to('/dashboard-admin');
+            } else {
+                return redirect()->to('/');
+            }
         } else {
             session()->setFlashdata('error', 'Email atau Password Salah');
             return redirect()->back();

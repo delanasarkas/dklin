@@ -28,44 +28,32 @@
                 </div>
                 <!--//app-card-header-->
                 <div class="app-card-body px-4 w-100">
-
-                    <div class="item border-bottom py-3">
-                        <div class="row justify-content-between align-items-center">
-                            <div class="col-auto">
-                                <div class="item-label"><strong>Username</strong></div>
-                                <div class="item-data">James</div>
+                    <form action="/ubah-profile/<?= $data_detail['id_users'] ?>" method="post">
+                        <div class="item py-2">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-12">
+                                    <div class="">
+                                        <label for="username" class="form-label">Username</label>
+                                        <input type="text" class="form-control" id="username" name="username" value="<?= $data_detail['username'] ?>" placeholder="Username" required>
+                                    </div>
+                                </div>
                             </div>
-                            <!--//col-->
-                            <div class="col text-end">
-                                <a class="btn-sm app-btn-secondary" href="#">Change</a>
-                            </div>
-                            <!--//col-->
+                            <!--//row-->
                         </div>
-                        <!--//row-->
-                    </div>
-                    <!--//item-->
-                    <div class="item border-bottom py-3">
-                        <div class="row justify-content-between align-items-center">
-                            <div class="col-auto">
-                                <div class="item-label"><strong>Nomor Teleepon</strong></div>
-                                <div class="item-data">08934558589</div>
+                        <div class="item py-2">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-12">
+                                    <div class="">
+                                        <label for="telepon" class="form-label">Telepon</label>
+                                        <input type="number" class="form-control" id="telepon" name="telepon" value="<?= $data_detail['no_telepon'] ?>" placeholder="Telepon" required>
+                                    </div>
+                                </div>
                             </div>
-                            <!--//col-->
-                            <div class="col text-end">
-                                <a class="btn-sm app-btn-secondary" href="#">Change</a>
-                            </div>
-                            <!--//col-->
+                            <!--//row-->
                         </div>
-                        <!--//row-->
-                    </div>
-                    <!--//item-->
+                        <button type="submit" class="btn app-btn-secondary mt-3 mb-3">Manage Profile</button>
+                    </form>
                 </div>
-                <!--//app-card-body-->
-                <div class="app-card-footer p-4 ">
-                    <a class="btn app-btn-secondary" href="#">Manage Profile</a>
-                </div>
-                <!--//app-card-footer-->
-
             </div>
             <!--//app-card-->
         </div>
@@ -95,44 +83,33 @@
                 <!--//app-card-header-->
                 <div class="app-card-body px-4 w-100">
 
-                    <div class="item border-bottom py-3">
-                        <div class="row justify-content-between align-items-center">
-                            <div class="col-auto">
-                                <div class="item-label"><strong>New Password</strong></div>
-                                <div class="item-data">••••••••</div>
+                    <form action="/ubah-password/<?= $data_detail['id_users'] ?>" method="post">
+                        <div class="item py-2">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-12">
+                                    <div class="">
+                                        <label for="new_password" class="form-label">Password Baru</label>
+                                        <input type="password" class="form-control" id="new_password" name="new_password" placeholder="..." required>
+                                    </div>
+                                </div>
                             </div>
-                            <!--//col-->
-                            <div class="col text-end">
-                                <a class="btn-sm app-btn-secondary" href="#">Change</a>
-                            </div>
-                            <!--//col-->
+                            <!--//row-->
                         </div>
-                        <!--//row-->
-                    </div>
-                    <!--//item-->
-
-                    <div class="item border-bottom py-3">
-                        <div class="row justify-content-between align-items-center">
-                            <div class="col-auto">
-                                <div class="item-label"><strong>Confirm New Password</strong></div>
-                                <div class="item-data">••••••••</div>
+                        <div class="item py-2">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-12">
+                                    <div class="">
+                                        <label for="confirm_new_password" class="form-label">Konfirmasi Password Baru</label>
+                                        <input type="password" class="form-control" id="confirm_new_password" name="confirm_new_password" placeholder="..." required>
+                                    </div>
+                                </div>
                             </div>
-                            <!--//col-->
-                            <div class="col text-end">
-                                <a class="btn-sm app-btn-secondary" href="#">Change</a>
-                            </div>
-                            <!--//col-->
+                            <!--//row-->
                         </div>
-                        <!--//row-->
-                    </div>
-                    <!--//item-->
+                        <button type="submit" class="btn app-btn-secondary mt-3 mb-3">Manage Security</button>
+                    </form>
                 </div>
                 <!--//app-card-body-->
-
-                <div class="app-card-footer p-4">
-                    <a class="btn app-btn-secondary" href="#">Manage Security</a>
-                </div>
-                <!--//app-card-footer-->
 
             </div>
             <!--//app-card-->

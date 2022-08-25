@@ -3,7 +3,7 @@
     <div class="sidepanel-inner d-flex flex-column">
         <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
         <div class="app-branding">
-            <a class="app-logo" href="/dashboard"><img class="logo-icon me-2" src="assets/images/logo.png" alt="logo"><span class="logo-text">DKLIN</span></a>
+            <a class="app-logo" href="/dashboard"><img class="logo-icon me-2" src="<?= base_url("assets/images/logo.png") ?>" alt="logo"><span class="logo-text">DKLIN</span></a>
 
         </div>
         <!--//app-branding-->
@@ -27,7 +27,7 @@
                     <!--//nav-item-->
                     <li class="nav-item">
                         <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                        <a class="nav-link <?= $title == "Order Customer" ? "active" : null ?>" href="/order-customer">
+                        <a class="nav-link <?= $title == "Order Customer" || $title == "Tambah Nota" || $title == "Ubah Nota" ? "active" : null ?>" href="/order-customer">
                             <span class="nav-icon">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M9.828 4a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 6.173 2H2.5a1 1 0 0 0-1 .981L1.546 4h-1L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3v1z" />
@@ -39,8 +39,7 @@
                         <!--//nav-link-->
                     </li>
                     <!--//nav-item-->
-                    <li class="nav-item">
-                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                    <!-- <li class="nav-item">
                         <a class="nav-link <?= $title == "Total Transfer" ? "active" : null ?>" href="/data-tf">
                             <span class="nav-icon">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -51,10 +50,9 @@
                                     <circle cx="3.5" cy="10.5" r=".5" />
                                 </svg>
                             </span>
-                            <span class="nav-link-text">Data TF/Uang Kas</span>
+                            <span class="nav-link-text">Uang Kas/Data TF</span>
                         </a>
-                        <!--//nav-link-->
-                    </li>
+                    </li> -->
                     <!--//nav-item-->
                     <li class="nav-item has-submenu">
                         <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
@@ -111,6 +109,7 @@
                         <!--//nav-link-->
                     </li>
 
+                    <?php if(session()->get('role') == 'admin') : ?>
                     <li class="nav-item">
                         <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                         <a class="nav-link <?= $title == "Stock Opname" ? "active" : null ?>" href="/stock-opname">
@@ -125,10 +124,46 @@
                         <!--//nav-link-->
                     </li>
                     <!--//nav-item-->
+                    <?php endif; ?>
+
+                    <li class="nav-item">
+                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                        <a class="nav-link <?= $title == "Pengeluaran" ? "active" : null ?>" href="/pengeluaran">
+                            <span class="nav-icon">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                                    <path fill-rule="evenodd" d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z" />
+                                    <circle cx="3.5" cy="5.5" r=".5" />
+                                    <circle cx="3.5" cy="8" r=".5" />
+                                    <circle cx="3.5" cy="10.5" r=".5" />
+                                </svg>
+                            </span>
+                            <span class="nav-link-text">Pengeluaran</span>
+                        </a>
+                        <!--//nav-link-->
+                    </li>
+                    <!--//nav-item-->
 
                     <li class="nav-item has-submenu">
                         <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                        <a class="nav-link submenu-toggle  <?= $title == "Data Customer" || $title == "Data Karyawan" ? "active" : null ?>" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-1" aria-expanded="false" aria-controls="submenu-1">
+                        <a class="nav-link submenu-toggle 
+                        <?= $title == "Data Customer" 
+                        || $title == "Data Karyawan" 
+                        || $title == "Tambah Karyawan"  
+                        || $title == "Ubah Karyawan" 
+                        || $title == "Paket Layanan" 
+                        || $title == "Tambah Layanan" 
+                        || $title == "Ubah Layanan" 
+                        || $title == "Jenis Pakaian" 
+                        || $title == "Tambah Jenis Pakaian" 
+                        || $title == "Ubah Jenis Pakaian"
+                        || $title == "Pembayaran"
+                        || $title == "Tambah Pembayaran"
+                        || $title == "Ubah Pembayaran"
+                        || $title == "Cabang"
+                        || $title == "Tambah Cabang"
+                        || $title == "Ubah Cabang"
+                        ? "active" : null ?>" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-1" aria-expanded="false" aria-controls="submenu-1">
                             <span class="nav-icon">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
@@ -150,40 +185,16 @@
                         <div id="submenu-1" class="collapse submenu submenu-1" data-bs-parent="#menu-accordion">
                             <ul class="submenu-list list-unstyled">
                                 <li class="submenu-item"><a class="submenu-link <?= $title == "Data Customer" ? "active" : null ?>" href="/data-customer">Customer</a></li>
-                                <li class="submenu-item"><a class="submenu-link <?= $title == "Data Karyawan" ? "active" : null ?>" href="/data-karyawan">Karyawan</a></li>
-                                <li class="submenu-item"><a class="submenu-link" href="login.html">Member</a></li>
+                                <?php if (session()->get('role') == 'owner') : ?>
+                                    <li class="submenu-item"><a class="submenu-link <?= $title == "Data Karyawan" || $title == "Tambah Karyawan" || $title == "Ubah Karyawan" ? "active" : null ?>" href="/data-karyawan">Karyawan</a></li>
+                                    <li class="submenu-item"><a class="submenu-link <?= $title == "Paket Layanan" || $title == "Tambah Layanan" || $title == "Ubah Layanan" ? "active" : null ?>" href="/paket-layanan">Paket Layanan</a></li>
+                                    <li class="submenu-item"><a class="submenu-link <?= $title == "Jenis Pakaian" || $title == "Tambah Jenis Pakaian" || $title == "Ubah Jenis Pakaian" ? "active" : null ?>" href="/jenis-pakaian">Jenis Pakaian</a></li>
+                                    <li class="submenu-item"><a class="submenu-link <?= $title == "Pembayaran" || $title == "Tambah Pembayaran" || $title == "Ubah Pembayaran" ? "active" : null ?>" href="/pembayaran">Pembayaran</a></li>
+                                    <li class="submenu-item"><a class="submenu-link <?= $title == "Cabang" || $title == "Tambah Cabang" || $title == "Ubah Cabang" ? "active" : null ?>" href="/cabang">Wilayah Cabang</a></li>
+                                <?php endif; ?>
                             </ul>
                         </div>
                     </li>
-                <?php endif; ?>
-
-                <?php if (session()->get('role') == 'master-admin') : ?>
-                    <li class="nav-item has-submenu">
-                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                        <a class="nav-link submenu-toggle" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-2" aria-expanded="false" aria-controls="submenu-2">
-                            <span class="nav-icon">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z" />
-                                    <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z" />
-                                </svg>
-                            </span>
-                            <span class="nav-link-text">Pengaturan</span>
-                            <span class="submenu-arrow">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-                                </svg>
-                            </span>
-                            <!--//submenu-arrow-->
-                        </a>
-                        <!--//nav-link-->
-                        <div id="submenu-2" class="collapse submenu submenu-2" data-bs-parent="#menu-accordion">
-                            <ul class="submenu-list list-unstyled">
-                                <li class="submenu-item"><a class="submenu-link" href="login.html">Layanan</a></li>
-                                <li class="submenu-item"><a class="submenu-link" href="login.html">Wilayah Cabang</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <!--//nav-item-->
                 <?php endif; ?>
             </ul>
             <!--//app-menu-->

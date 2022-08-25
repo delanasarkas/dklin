@@ -19,79 +19,44 @@
                             <thead>
                                 <tr>
                                     <th class="cell">No</th>
-                                    <th class="cell">Data Customer</th>
+                                    <th class="cell">Customer</th>
                                     <th class="cell">No Nota</th>
                                     <th class="cell">Tanggal Pesan</th>
                                     <th class="cell">Berat Kg</th>
                                     <th class="cell">Sisa Paket kg</th>
-                                    <th class="cell">Tanggal Keluar</th>
-                                    <th class="cell">Karyawan</th>
-                                    <th class="cell"></th>
+                                    <th class="cell">Tanggal Selesai</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $i = 1; ?>
+                                <?php foreach($data_table as $data) : ?>
                                 <tr>
                                     <td class="cell text-center">
-                                        1
+                                        <?= $i++; ?>
                                     </td>
                                     <td class="cell">
-                                        Customer budi
+                                        <?php if($data['deposit_customer'] > 0) : ?>
+                                            <i class="fas fa-crown text-warning"></i>
+                                        <?php endif; ?>
+                                        <?= $data['nama_customer'] ?>
                                     </td>
                                     <td class="cell">
-                                        304521
+                                        <?= $data['no_nota'] ?>
                                     </td>
                                     <td class="cell">
-                                        8 Mei 2022
+                                        <?= date('d M Y', strtotime($data['created_at'])) ?>
                                     </td>
                                     <td class="cell">
-                                        Deposit 4Kg
+                                        <?= $data['berat'] ?>Kg
                                     </td>
                                     <td class="cell">
-                                        4Kg
+                                        <?= $data['deposit_customer'] ?>Kg
                                     </td>
                                     <td class="cell">
-                                        10 Mei 2022 
-                                    </td>
-                                    <td class="cell">
-                                        Nani
-                                    </td>
-                                    <td class="cell">
-                                        <a class="btn-sm app-btn-secondary" href="#">
-                                            Edit
-                                        </a>
+                                        <?= date('d M Y', strtotime($data['tgl_selesai'])) ?>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="cell text-center">
-                                        2
-                                    </td>
-                                    <td class="cell">
-                                        Customer Andi
-                                    </td>
-                                    <td class="cell">
-                                        304522
-                                    </td>
-                                    <td class="cell">
-                                        17 Juni 2022
-                                    </td>
-                                    <td class="cell">
-                                        10Kg
-                                    </td>
-                                    <td class="cell">
-                                        5Kg
-                                    </td>
-                                    <td class="cell">
-                                        20 Juni 2022
-                                    </td>
-                                    <td class="cell">
-                                      Nana
-                                    </td>
-                                    <td class="cell">
-                                        <a class="btn-sm app-btn-secondary" href="#">
-                                            Edit
-                                        </a>
-                                    </td>
-                                </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>

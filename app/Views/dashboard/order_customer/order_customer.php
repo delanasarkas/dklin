@@ -9,7 +9,7 @@
         <div class="col-auto">
             <a class="btn app-btn-secondary" href="/tambah-nota">
                 <i class="fas fa-plus"></i>
-                Tambah Nota
+                Tambah Order
             </a>
         </div>
         <!--//col-auto-->
@@ -27,84 +27,97 @@
                                     <th class="cell">No</th>
                                     <th class="cell">Nomor Nota</th>
                                     <th class="cell">Nama</th>
+                                    <th class="cell">Telepon</th>
                                     <th class="cell">Jasa</th>
-                                    <th class="cell">Kg/St</th>
-                                    <th class="cell">Jenis</th>
-                                    <th class="cell">Rp/Kg</th>
-                                    <th class="cell">Rp/Satuan</th>
-                                    <th class="cell">Pelunasan</th>
-                                    <th class="cell"></th>
+                                    <th class="cell">Total Order</th>
+                                    <th class="cell">Total Bayar</th>
+                                    <th class="cell">Status</th>
+                                    <th class="cell">Act</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="cell text-center">
-                                        1
-                                    </td>
-                                    <td class="cell">
-                                        30451
-                                    </td>
-                                    <td class="cell">
-                                        John Sanders
-                                    </td>
-                                    <td class="cell">
-                                        Cuci Setrika
-                                    </td>
-                                    <td class="cell">
-                                        4Kg
-                                    </td>
-                                    <td class="cell">
-                                        Ph
-                                    </td>
-                                    <td class="cell">
-                                        30.000
-                                    </td>
-                                    <td class="cell">
-                                        30.000
-                                    </td>
-                                    <td class="cell">
-                                        <span class="badge bg-success">Lunas</span>
-                                    </td>
-                                    <td class="cell">
-                                        <a class="btn-sm app-btn-secondary" href="#">
-                                            Edit
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="cell text-center">
-                                        2
-                                    </td>
-                                    <td class="cell">
-                                        30452
-                                    </td>
-                                    <td class="cell">
-                                        John Mayer
-                                    </td>
-                                    <td class="cell">
-                                        Cuci Setrika
-                                    </td>
-                                    <td class="cell">
-                                        4Kg
-                                    </td>
-                                    <td class="cell">
-                                        Ph
-                                    </td>
-                                    <td class="cell">
-                                        30.000
-                                    </td>
-                                    <td class="cell">
-                                        30.000
-                                    </td>
-                                    <td class="cell">
-                                        <span class="badge bg-danger">Belum Lunas</span>
-                                    </td>
-                                    <td class="cell">
-                                        <a class="btn-sm app-btn-secondary" href="#">
-                                            Edit
-                                        </a>
-                                    </td>
-                                </tr>
+                                <?php $no = 1; ?>
+                                <?php foreach($data_table as $data) : ?>
+                                    <tr>
+                                        <td class="cell text-center">
+                                            <?= $no++; ?>
+                                        </td>
+                                        <td class="cell">
+                                            <a href="/view-kwitansi/<?= $data['id_order'] ?>" target="_blank">
+                                                <u>
+                                                    <?= $data['no_nota'] ?>
+                                                </u>
+                                            </a>
+                                        </td>
+                                        <td class="cell text-capitalize">
+                                            <?php if($data['deposit_customer'] > 0) : ?>
+                                            <i class="fas fa-crown text-warning"></i>
+                                            <?php endif; ?>
+                                            <?= $data['nama_customer'] ?>
+                                        </td>
+                                        <td class="cell">
+                                            <a href="https://wa.me/62<?= substr($data['telp_customer'],1) ?>?text=Hallo" target="_blank" class="badge bg-black text-white">
+                                                <i class="fab fa-whatsapp text-white"></i> <?= $data['telp_customer'] ?>
+                                            </a>
+                                        </td>
+                                        <td class="cell">
+                                            <?= $data['nama_layanan'] ?>
+                                        </td>
+                                        <td class="cell">
+                                            <?= 'Rp '.number_format($data['total_order'], 0,',','.') ?> (<?= $data['berat'] ?><?= $data['tipe_layanan'] == 'kg' ? 'Kg' : 'Pcs' ?>)
+                                        </td>
+                                        <td class="cell">
+                                            <?= 'Rp '.number_format($data['total_bayar'], 0,',','.') ?> 
+                                            <br/>
+                                            <span class="badge bg-warning"><?= $data['nama_pembayaran'] ?></span>
+                                        </td>
+                                        <td class="cell">
+                                            <?php if($data['status'] == 'lunas'): ?>
+                                                <span class="badge bg-success text-capitalize">
+                                                    <i class="fas fa-check-circle"></i> <?= $data['status'] ?>
+                                                </span>
+                                            <?php else : ?>
+                                                <span class="badge bg-danger text-capitalize">
+                                                    <i class="fas fa-times-circle"></i> <?= $data['status'] ?>
+                                                </span>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td class="cell">
+                                            <?php if($data['status'] == 'belum lunas'): ?>
+                                                <a class="btn-sm app-btn-secondary me-2" href="javascript:;" data-bs-toggle="modal" data-bs-target="#modalLunas-<?= $data['id_order'] ?>">
+                                                    Lunaskan
+                                                </a>
+                                            <?php endif; ?>
+
+                                            <?php if($data['tipe_pembayaran'] != 'saldo' || $data['tipe_pembayaran'] != 'multi'): ?>
+                                                <a class="btn-sm app-btn-secondary" href="/detail-nota/<?= $data['id_order'] ?>">
+                                                    Edit
+                                                </a>
+                                            <?php else : ?>
+                                                -
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Modal Lunas -->
+                                    <div class="modal fade" id="modalLunas-<?= $data['id_order'] ?>" tabindex="-1" aria-labelledby="modalLunasLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-sm modal-dialog-centered">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modalLunasLabel">Konfirmasi</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Order <strong><?= $data['no_nota'] ?></strong> lunas?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-transparent" data-bs-dismiss="modal">Close</button>
+                                                <a href="/lunas-order/<?= $data['id_order'] ?>" class="btn btn-primary text-white">Lunas</a>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>

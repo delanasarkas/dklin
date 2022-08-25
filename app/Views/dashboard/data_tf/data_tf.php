@@ -17,7 +17,7 @@
             <div class="tab-content" id="orders-table-tab-content">
                 <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
                     <div class="app-card app-card-orders-table shadow-sm mb-5 ">
-                        <div class="app-card-body p-2">
+                        <div class="app-card-body p-3">
                             <div class="table-responsive">
                                 <table id="example" style="width:100%" class="table table-striped app-table-hover mb-0 text-left">
                                     <thead>
@@ -80,7 +80,7 @@
         <div class="col-lg-12">
             <div class="row g-3 mb-4 align-items-center justify-content-between">
                 <div class="col-auto">
-                    <h1 class="app-page-title mb-1">Laporan Kas Keluar</h1>
+                    <h1 class="app-page-title mb-1">Laporan TF Masuk</h1>
                     <h5 class="mb-0">Senin 10 Agustus 2022</h5>
                 </div>
                 <!--//col-auto-->
@@ -89,7 +89,7 @@
             <div class="tab-content" id="orders-table-tab-content">
                 <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
                     <div class="app-card app-card-orders-table shadow-sm mb-5 ">
-                        <div class="app-card-body p-2">
+                        <div class="app-card-body p-3">
                             <div class="table-responsive">
                                 <table id="example2" style="width:100%" class="table table-striped app-table-hover mb-0 text-left">
                                     <thead>

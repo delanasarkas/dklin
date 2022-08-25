@@ -17,7 +17,7 @@
                 </div>
                 <!--//col-->
                 <div class="app-search-box col">
-                    <p class="m-0">Cabang Bukit Dago | 12 Agustus 2022</p>
+                    <p class="m-0"><?= $data_general[0]['nama_general'] ?> | <?= date('d F Y') ?></p>
                 </div>
                 <!--//app-search-box-->
 
@@ -27,13 +27,17 @@
 
                     <div class="app-utility-item app-user-dropdown dropdown">
                         <?php if(session()->get('role') != 'kasir'): ?>
-                            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="assets/templateauth/images/profiles/admin.png" class="rounded-circle" alt="admin profile"></a>
+                            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="<?= base_url("assets/templateauth/images/profiles/admin.png") ?>" class="rounded-circle" alt="admin profile"></a>
                         <?php else : ?>
-                            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="assets/templateauth/images/profiles/kasir.png" class="rounded-circle" alt="kasir profile"></a>
+                            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="<?= base_url("assets/templateauth/images/profiles/kasir.png") ?>" class="rounded-circle" alt="kasir profile"></a>
                         <?php endif; ?>
 
                         <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
                             <li><a class="dropdown-item" href="/account">Account</a></li>
+                            <?php if(session()->get('role') == 'owner'): ?>
+                                <li><a class="dropdown-item" href="/settings">Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                            <?php endif; ?>
                             <li><a class="dropdown-item" href="/logout">Log Out</a></li>
                         </ul>
                     </div>
