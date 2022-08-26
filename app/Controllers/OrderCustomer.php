@@ -28,7 +28,7 @@ class OrderCustomer extends BaseController
             $dataGeneral = $modelGeneral->findAll();
             $id_users = session()->get('id_users');
             
-            $dataTable = $db->query("SELECT a.id_order, a.no_nota, a.berat, a.total_order, a.total_bayar, a.status, b.nama_customer, b.telp_customer, b.deposit_customer, c.nama_layanan, c.tipe_layanan, d.nama_pembayaran, d.tipe_pembayaran FROM orders a, customer b, layanan c, pembayaran d WHERE a.id_customer = b.id_customer AND a.id_layanan = c.id_layanan AND a.id_pembayaran = d.id_pembayaran AND a.id_users = $id_users ORDER BY a.id_order DESC")->getResult('array');
+            $dataTable = $db->query("SELECT a.id_order, a.no_nota, a.berat, a.total_order, a.total_bayar, a.created_at, a.status, b.nama_customer, b.telp_customer, b.deposit_customer, c.nama_layanan, c.tipe_layanan, d.nama_pembayaran, d.tipe_pembayaran FROM orders a, customer b, layanan c, pembayaran d WHERE a.id_customer = b.id_customer AND a.id_layanan = c.id_layanan AND a.id_pembayaran = d.id_pembayaran AND a.id_users = $id_users ORDER BY a.id_order DESC")->getResult('array');
 
             $data = [
                 "title" => "Order Customer",
@@ -266,7 +266,7 @@ class OrderCustomer extends BaseController
 
         if($getPembayaranById['tipe_pembayaran'] == 'saldo' && (int) $getCustomerById['deposit_customer'] < (int) $berat) {
             session()->setFlashdata('saldo-gagal', 'Saldo tidak mencukupi!');
-            return redirect()->to('/ubah-nota');
+            return redirect()->back();
         } 
 
         if(
@@ -275,17 +275,17 @@ class OrderCustomer extends BaseController
             ($getPembayaranById['tipe_pembayaran'] == 'multi' && (int) $getCustomerById['deposit_customer'] == 0)
         ) {
             session()->setFlashdata('saldo-gagal', 'Tipe pembayaran tidak sesuai!');
-            return redirect()->to('/ubah-nota');
+            return redirect()->back();
         }
 
         if($getPembayaranById['tipe_pembayaran'] == 'multi' && (int) $getCustomerById['deposit_customer'] >= (int) $berat) {
             session()->setFlashdata('saldo-gagal', 'Multipayment gagal, saldo deposit masih mencukupi!');
-            return redirect()->to('/ubah-nota');
+            return redirect()->back();
         } 
 
         if(($getPembayaranById['tipe_pembayaran'] == 'multi' && $status_pembayaran == 'belum lunas') || ($getPembayaranById['tipe_pembayaran'] == 'saldo' && $status_pembayaran == 'belum lunas')) {
             session()->setFlashdata('saldo-gagal', 'Order gagal, jika tipe pembayaran saldo deposit / multipayment silakan pilih status pembayaran lunas!');
-            return redirect()->to('/ubah-nota');
+            return redirect()->back();
         }
 
         $modelOrder->update($id, [

@@ -9,7 +9,7 @@
                 <div class="app-card-body p-3">
                     <div class="row">
                         <div class="ms-2 me-2 mt-2">
-                            <form action="/ubah-layanan/<?= $data_detail['id_layanan'] ?>" method="POST">
+                            <form action="/ubah-layanan/<?= $data_detail['id_layanan'] ?>" method="POST" novalidate>
                                 <div class="mb-3">
                                     <label for="nama_layanan" class="form-label">Nama Layanan</label>
                                     <input type="text" class="form-control" id="nama_layanan" name="nama_layanan" value="<?= $data_detail['nama_layanan'] ?>" placeholder="Nama Layanan" required>

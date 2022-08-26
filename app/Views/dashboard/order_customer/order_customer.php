@@ -32,6 +32,7 @@
                                     <th class="cell">Total Order</th>
                                     <th class="cell">Total Bayar</th>
                                     <th class="cell">Status</th>
+                                    <th class="cell">Tgl Order</th>
                                     <th class="cell">Act</th>
                                 </tr>
                             </thead>
@@ -83,13 +84,16 @@
                                             <?php endif; ?>
                                         </td>
                                         <td class="cell">
+                                            <?= date('d F Y', strtotime($data['created_at'])) ?>
+                                        </td>
+                                        <td class="cell">
                                             <?php if($data['status'] == 'belum lunas'): ?>
                                                 <a class="btn-sm app-btn-secondary me-2" href="javascript:;" data-bs-toggle="modal" data-bs-target="#modalLunas-<?= $data['id_order'] ?>">
                                                     Lunaskan
                                                 </a>
                                             <?php endif; ?>
 
-                                            <?php if($data['tipe_pembayaran'] != 'saldo' || $data['tipe_pembayaran'] != 'multi'): ?>
+                                            <?php if($data['tipe_pembayaran'] != 'saldo' && $data['tipe_pembayaran'] != 'multi'): ?>
                                                 <a class="btn-sm app-btn-secondary" href="/detail-nota/<?= $data['id_order'] ?>">
                                                     Edit
                                                 </a>
